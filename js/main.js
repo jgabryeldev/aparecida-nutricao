@@ -20,11 +20,13 @@ for(let i = 0; i<pacientes.length; i++){
     {
         imc.textContent = "Peso Inválido!";
         pesoValido = false;
+        paciente.classList.add("paciente-invalido");
     }
     if(altura>=3 || altura<=0)
     {
         imc.textContent = "Altura Inválida!";
         alturaValida= false;
+        paciente.classList.add("paciente-invalido");
     }
 
     if(pesoValido && alturaValida){

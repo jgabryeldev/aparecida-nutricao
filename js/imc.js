@@ -1,7 +1,3 @@
-/*let titulo = document.querySelector(".titulo");
-
-titulo.textContent = "Modifica o texto da página";*/
-
 let pacientes = document.querySelectorAll(".paciente");
 
 for(let i = 0; i<pacientes.length; i++){
@@ -30,7 +26,13 @@ for(let i = 0; i<pacientes.length; i++){
     }
 
     if(pesoValido && alturaValida){
-        let imcCalculo = peso/(altura*altura);
-        imc.textContent = imcCalculo.toFixed(2);
+        let imcCalculo = calculaImc(peso, altura);
+        imc.textContent = imcCalculo
     }
+}
+
+function calculaImc(peso, altura){
+    let imc = 0;
+    imc = peso / (altura*altura);
+    return imc.toFixed(2);
 }

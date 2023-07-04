@@ -34,12 +34,27 @@ function criaTr(paciente) {
     let gorduraTd = document.createElement("td");
     let imcTd = document.createElement("td");
 
+    /*Validação do peso e altura*/
+    pesoEhValido = pesoValido(paciente.peso);
+    alturaEhValida = alturaValida(paciente.altura);
+
+    if(!pesoEhValido){
+        alert("Peso Inválido!");
+        return;
+    }
+    if(!alturaEhValida){
+        alert("Altura Inválida!");
+        return;
+    }
+    if (alturaEhValida && pesoEhValido) {
+        imcTd.textContent = paciente.imc;
+    }
+
     /*Extrai o conteúdo de texto do paciente*/
     nomeTd.textContent = paciente.nome;
     pesoTd.textContent = paciente.peso;
     alturaTd.textContent = paciente.altura;
     gorduraTd.textContent = paciente.gordura;
-    imcTd.textContent = paciente.imc;
 
     /*Adiciona classe ao td*/
     nomeTd.classList.add("info-nome");

@@ -37,16 +37,18 @@ function criaTr(paciente) {
     /*Validação do peso e altura*/
     pesoEhValido = pesoValido(paciente.peso);
     alturaEhValida = alturaValida(paciente.altura);
+    let erro = document.querySelector("#paciente-invalido");
 
     if(!pesoEhValido){
-        alert("Peso Inválido!");
+        erro.textContent = "O peso é inválido";
         return;
     }
     if(!alturaEhValida){
-        alert("Altura Inválida!");
+        erro.textContent = "A altura é inválida";
         return;
     }
     if (alturaEhValida && pesoEhValido) {
+        erro.textContent="";
         imcTd.textContent = paciente.imc;
     }
 

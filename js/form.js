@@ -35,21 +35,17 @@ function criaTr(paciente) {
     let imcTd = document.createElement("td");
 
     /*Validação do peso e altura*/
-    pesoEhValido = pesoValido(paciente.peso);
-    alturaEhValida = alturaValida(paciente.altura);
-    let erro = document.querySelector("#paciente-invalido");
+    
+    let erros = validacaoPaciente(paciente);
 
-    if(!pesoEhValido){
-        erro.textContent = "O peso é inválido";
-        return;
+
+    if (erros.length > 0) {
+        exibeErro(erros);
     }
-    if(!alturaEhValida){
-        erro.textContent = "A altura é inválida";
-        return;
-    }
-    if (alturaEhValida && pesoEhValido) {
-        erro.textContent="";
+    if(erros.length == 0){
         imcTd.textContent = paciente.imc;
+        let exibeMensagemErro = document.querySelector("#adiciona-erros-paciente");
+        exibeMensagemErro.innerHTML = "";
     }
 
     /*Extrai o conteúdo de texto do paciente*/
@@ -72,4 +68,41 @@ function criaTr(paciente) {
     pacienteTr.appendChild(gorduraTd);
     pacienteTr.appendChild(imcTd);
     return pacienteTr;
+}
+/*Toda a validação dos campos de adição de paciente*/
+function validacaoPaciente(paciente) {
+    let erros = [];
+    pesoEhValido = pesoValido(paciente.peso);
+    alturaEhValida = alturaValida(paciente.altura);
+    if(paciente.nome.length == 0){
+        erros.push("O nome não pode ser em branco!");
+    }
+    if(paciente.peso.length == 0){
+        erros.push("O peso não pode ser em branco!");
+    }
+    if(paciente.altura.length == 0){
+        erros.push("A altura não pode ser em branco!");
+    }
+    if(paciente.gordura.length == 0){
+        erros.push("A gordura não pode ser em branco!");
+    }
+    if(!pesoEhValido){
+        erros.push("O peso é inválido!");
+    }
+    if(!alturaEhValida){
+        erros.push("A altura é inválida!");
+    }
+    return erros;
+}
+
+/*Função responsável em adicionar os a mensagens de erros na minha ul*/
+function exibeErro(erros) {
+    let ul = document.querySelector("#adiciona-erros-paciente");
+    ul.innerHTML = "";
+
+    erros.forEach(function adicionaLi(erro) {
+        let li = document.createElement("li");
+        li.textContent = erro;
+        ul.appendChild(li);
+    })
 }

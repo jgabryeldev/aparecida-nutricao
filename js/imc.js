@@ -44,6 +44,6 @@ function pesoValido(peso) {
 }
 function alturaValida(altura) {
     let alturaEhValida = true;
-    alturaEhValida = (altura>=0 && altura<=3.0)?true:false;
+    alturaEhValida = (altura>0 && altura<=3.0)?true:false;
     return alturaEhValida;
 }

@@ -142,3 +142,7 @@ button[disabled=disabled], button:disabled {
 #adiciona-erros-paciente{
 	color: red;
 }
+.fadeOut{
+	opacity: 0;
+	transition: 0.5s;
+}

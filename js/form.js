@@ -6,7 +6,7 @@ botaoAdicionaPaciente.addEventListener("click", function adicionaPaciente(Event)
     let paciente = dadosPaciente(formulario);
     let pacienteTr = criaTr(paciente);
     /*Adiciona à tabela do meu HTML*/
-    let tabela = document.querySelector("#tabela");
+    let tabela = document.querySelector("#tabela-pacientes");
     tabela.appendChild(pacienteTr);
     formulario.reset();
 }

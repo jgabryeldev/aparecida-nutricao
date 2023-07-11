@@ -4,10 +4,7 @@ botaoAdicionaPaciente.addEventListener("click", function adicionaPaciente(Event)
     Event.preventDefault();
     let formulario = document.querySelector("#form-adiciona");
     let paciente = dadosPaciente(formulario);
-    let pacienteTr = criaTr(paciente);
-    /*Adiciona à tabela do meu HTML*/
-    let tabela = document.querySelector("#tabela-pacientes");
-    tabela.appendChild(pacienteTr);
+    adicionaPacienteNaTabela(paciente);
     formulario.reset();
 }
 )
@@ -105,4 +102,10 @@ function exibeErro(erros) {
         li.textContent = erro;
         ul.appendChild(li);
     })
+}
+
+function adicionaPacienteNaTabela(paciente) {
+    let montaTr = criaTr(paciente);
+    let tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(montaTr);
 }
